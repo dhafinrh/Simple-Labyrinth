@@ -6,10 +6,10 @@ public class AudioManager : MonoBehaviour
     static AudioSource bgmInstance;
     static AudioSource sfxInstance;
     [SerializeField] private AudioSource bgm, sfx;
-    [SerializeField] Toggle muteToggle;
-    [SerializeField] Slider bgmSlider;
-    [SerializeField] Slider sfxSlider;
 
+    public bool IsMute { get => bgm.mute; }
+    public float BgmVolume { get => bgm.volume; }
+    public float SfxVolume { get => sfx.volume; }
 
     private void Awake()
     {
@@ -40,15 +40,6 @@ public class AudioManager : MonoBehaviour
             sfx.transform.SetParent(null);
             DontDestroyOnLoad(sfx.gameObject);
         }
-
-        UpdateUI();
-    }
-
-    private void UpdateUI()
-    {
-        muteToggle.isOn = bgm.mute;
-        bgmSlider.value = bgm.volume;
-        sfxSlider.value = sfx.volume;
     }
 
     public void PlayBGM(AudioClip clip, bool loop = true)
