@@ -1,0 +1,2 @@
+# Simple Labyrinth
+ Simple sekali
